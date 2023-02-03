@@ -8,6 +8,6 @@ export class CalculatorService {
     return firstNo+secondNo;
   }
   subOperation(firstNo:number, secondNo:number):number{
-    return firstNo-secondNo;
+    return firstNo-secondNo; 
   }
 }
