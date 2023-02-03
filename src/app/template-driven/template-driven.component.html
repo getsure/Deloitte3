@@ -1,0 +1,29 @@
+<div class="container">
+    <h3>User Registration Form</h3> <hr/>
+    <form #userForm = "ngForm" (ngSubmit)="sendData(userForm.value)">
+        <label>Name:</label>
+        <input type="text" class="form-control"  #nameRef="ngModel" name="name" ngModel  required minlength="5" maxlength="15" pattern="[a-z0-9\s]{4,9}"/> 
+
+        <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="text text-danger">
+           <div [hidden]="!nameRef.errors['required']">
+              Please enter Name
+           </div>
+
+           <div [hidden]="!nameRef.errors['pattern']">
+            Please enter valid Name
+         </div>
+
+        </div>
+        <label>Email:</label>
+        <input type="text" class="form-control"  #emailRef="ngModel" name="email" ngModel/> 
+
+        <div ngModelGroup="address">
+            <div class="form-group">
+                <label>City:</label>
+                <input type="text" class="form-control"  #cityRef="ngModel" name="city" ngModel/>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-success">Submit</button>
+    </form>
+</div>
